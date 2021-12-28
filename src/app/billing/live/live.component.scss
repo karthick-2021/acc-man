@@ -1,0 +1,90 @@
+$product-width: 100rem;
+
+.live-billing-body {
+    // background: blue;
+}
+.live-billing-cust-info {
+    margin: 10px 5px;
+}
+
+.live-billing-table {
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.live-billing-table-headers {
+    display: flex;    
+    background: black;
+    color: white;
+}
+
+.live-billing-table-header {
+    width: 5rem;
+    // border-right: 1px solid black;
+    text-align: center;
+    padding: 0.5rem;
+}
+.live-billing-table-header:nth-child(2) {
+   width: $product-width;    
+}
+
+.live-billing-table-header:last-child {
+    border-right: none;
+}
+
+.live-billing-table-datas {
+    display: flex;
+}
+.live-billing-table-data {
+    width: 5rem;
+    border: none;    
+    text-align: right;
+    padding: 0.5rem;
+}
+
+.live-billing-table-data:first-child {
+    text-align: center;
+}
+
+.live-billing-table-data:nth-child(2) {
+    width: $product-width;    
+    text-align: left;
+    
+}
+.live-billing-table-data:last-child {
+    border-right: none;
+}
+
+.live-billing-table-footers {
+    display: flex;
+}
+
+.live-billing-table-footer {
+    width: 5rem;
+    border: none; 
+    text-align: right;
+    padding: 0.5rem;
+}
+
+.live-billing-table-footer:first-child {
+    text-align: center;
+}
+
+.live-billing-table-footer:nth-child(2) {
+    width: $product-width;    
+    text-align: left;
+    
+}
+
+.live-billing-table-footer:nth-child(3) {
+    width: 10rem;    
+}
+
+.live-billing-table-footer:last-child {
+    border-right: none;
+    background: #011b33;
+    color: white;
+    border: 2px solid;
+    border-radius: 10px;
+}

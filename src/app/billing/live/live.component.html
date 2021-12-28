@@ -1,0 +1,35 @@
+<div class="live-billing-body">
+    <div class="live-billing-cust-info">
+        <div>Customer Name : Karthick</div>
+        <div>Customer Mobile : +91-9975681208</div>
+    </div>
+
+    <div class="live-billing-table">
+        <div class="live-billing-table-headers">
+            <div class="live-billing-table-header" *ngFor="let header of tableHeaders">{{ header }}</div>
+        </div>
+        <div class="live-billing-table-datas" *ngFor="let data of dataSource">
+            <div class="live-billing-table-data">{{ data.sno }}</div>
+            <input type="text" autofocus class="live-billing-table-data" placeholder="Enter product"
+                [(ngModel)]="data.product">
+            <input type="text" class="live-billing-table-data" [(ngModel)]="data.quantity">
+            <input type="text" class="live-billing-table-data" [(ngModel)]="data.price" (blur)="addNewRow(data)">
+            <div class="live-billing-table-data">{{ getSubTotal(data) }}</div>
+        </div>
+        <div class="live-billing-table-footers">
+            <div class="live-billing-table-footer"></div> <div class="live-billing-table-footer"></div> 
+            <div class="live-billing-table-footer">Total</div>
+            <div class="live-billing-table-footer">{{ total }}</div>
+        </div>
+        <div class="live-billing-table-footers">
+            <div class="live-billing-table-footer"></div> <div class="live-billing-table-footer"></div> 
+            <div class="live-billing-table-footer">Tax</div>
+            <div class="live-billing-table-footer">{{ tax }} %</div>
+        </div>
+        <div class="live-billing-table-footers">
+            <div class="live-billing-table-footer"></div> <div class="live-billing-table-footer"></div> 
+            <div class="live-billing-table-footer">Grand Total</div>
+            <div class="live-billing-table-footer">{{ grandTotal }}</div>
+        </div>
+    </div>
+</div>

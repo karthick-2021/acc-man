@@ -1,0 +1,30 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-header {
+    display: flex;
+    margin: 5px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.app-header-menu {
+    margin: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+.menu-selected {
+    color: #ffeb3b;
+    margin-bottom: 0px;
+    border-bottom: 3px solid white;
+}
+
+.app-body {
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
