@@ -11,6 +11,8 @@ $product-width: 100rem;
     border: 1px solid blue;
     border-radius: 5px;
     margin: 5px;
+    height: calc(100vh - 15vw);
+    overflow-y: auto;
 }
 
 .live-billing-table-headers {
@@ -36,6 +38,7 @@ $product-width: 100rem;
 .live-billing-table-datas {
     display: flex;
 }
+
 .live-billing-table-data {
     width: 5rem;
     border: none;    
@@ -54,6 +57,11 @@ $product-width: 100rem;
 }
 .live-billing-table-data:last-child {
     border-right: none;
+}
+
+
+.live-billing-footer {
+    margin-right: 5px;
 }
 
 .live-billing-table-footers {
