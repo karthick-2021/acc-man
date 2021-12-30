@@ -8,6 +8,8 @@ import { WarehouseComponent } from './warehouse/warehouse.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatIconModule} from '@angular/material/icon'
+
 
 
 
@@ -32,6 +34,7 @@ export const ROUTES: Routes = [
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
+    MatIconModule,
     RouterModule.forChild(ROUTES),
   ],
   exports: [LiveComponent],

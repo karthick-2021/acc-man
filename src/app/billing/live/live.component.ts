@@ -33,6 +33,8 @@ export class LiveComponent implements OnInit {
   custEmail = '';
   custMobile = '';
 
+  hoverData = 0;
+
   private _filter(value: string): string[] {
     const filterValue = this._normalizeValue(value);
     return this.products.filter(street => this._normalizeValue(street).includes(filterValue));
@@ -45,13 +47,40 @@ export class LiveComponent implements OnInit {
   constructor(public billingService: BillingServiceService, public staticData: StaticDataService) { }
 
   ngOnInit(): void {
-    this.dataSource = [new LiveBilling(this.index++)];
+    this.clear();
     this.inventory = this.staticData.getInventory();
     this.products = _.map(this.inventory, 'product');
     this.filteredStreets = this.control.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
     );
+  }
+
+  clear() {
+    this.dataSource = [new LiveBilling(this.index++)];
+  }
+
+  submit() {
+    let index = 0;
+    this.dataSource.forEach(a => a.sno = index++)
+    this.dataSource.pop()
+    console.log('Sending to backend')
+    console.log(this.dataSource)
+  }
+  displayDelete(value: LiveBilling) {
+    this.hoverData = value.sno;
+  }
+
+  isDisplay(value: LiveBilling): any {
+    return value && value.sno && value.sno === this.hoverData;
+  }
+
+  deleteItem(value: LiveBilling) {
+    value && value.product && _.remove(this.dataSource, value)
+  }
+
+  getIndex(value: LiveBilling): number {
+    return _.findIndex(this.dataSource, value) + 1;
   }
 
   addItem(value: LiveBilling) {

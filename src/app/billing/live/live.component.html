@@ -18,11 +18,11 @@
             <div><input type="text" placeholder="Enter customer email" [(ngModel)]="custEmail" type="text"></div>
         </div>
     </div>
-
+    
     <div class="billing-order-buttons">
         <div></div>
-        <div><button class="billing-order-button">CLEAR</button>
-            <button class="billing-order-button">SUBMIT</button></div>
+        <div><button class="billing-order-button" title="Clear All" (click)="clear()">CLEAR</button>
+            <button class="billing-order-button" title="Submit" (click)="submit()">SUBMIT</button></div>
     </div>
     <div class="billing-table">
         <div class="grid-container-table">
@@ -31,8 +31,11 @@
 
         <div class="grid-container-table" *ngFor="let data of dataSource">
             <!-- <div class="live-billing-table-datas1" *ngFor="let data of dataSource"> -->
-            <div class="grid-container-table-data">{{ data.sno }}</div>
-
+            <div class="grid-container-table-data" (mouseover)="displayDelete(data)" (mouseout)="hoverData=0">
+                <span *ngIf="!isDisplay(data)">{{ getIndex(data) }}</span>
+                <mat-icon *ngIf="isDisplay(data)" (click)="deleteItem(data)">delete</mat-icon>
+            </div>
+            
             <input type="text" class="grid-container-table-data" placeholder="Enter product" [(ngModel)]="data.product"
                 type="text" id="products" name="products" list="product-list" (focusout)="addItem(data)">
 
