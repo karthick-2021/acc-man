@@ -1,5 +1,132 @@
-$product-width: 100rem;
+$sno-cell-width: 3rem;
+$product-width: 90rem;
 
+$default-cell-width: 7rem;
+$default-border-radius: 5px;
+$default-margin: 10px;
+$default-padding: 10px;
+$default-cell-padding: 0.5rem;
+$default-border-color: black;
+
+$sno-cell-text-align: center;
+$product-cell-text-align: left;
+$default-cell-text-align: right;
+
+$table-header-bg-color: #011b33;
+$table-data-bottom-bg-color: #03a9f429;
+$grand-total-bg-color: #011b33;
+
+
+$columns: 6;
+
+.billing-order-info {
+    border: 1px solid $default-border-color;
+    border-radius: $default-border-radius;
+    margin: $default-margin;
+    padding: $default-padding;
+}
+
+.grid-container-billing-order-info {
+    display: grid;
+    grid-template-columns: 10% 70% 10% 10%;
+}
+
+.grid-container-billing-order-info:last-child {
+    grid-template-columns: 10% 80% 10% ;
+}
+.billing-table {
+    border: 1px solid $default-border-color;
+    border-radius: $default-border-radius;
+    margin: 0px $default-margin $default-margin $default-margin;
+    padding: $default-padding;
+    height: calc(100vh - 18vw);
+    overflow-y: auto;
+}
+
+.billing-order-buttons {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    margin: 10px 10px 0px 10px;
+    text-align: right;
+}
+
+.billing-order-button {
+    border-radius: 10px;
+    background: black;
+    color: white;
+    border: 3px solid #a972cbb0;
+    width: 70px;
+    margin-left: 5px;
+    padding: 5px;
+}
+
+.grid-container-table {
+    display: grid;
+    grid-template-columns: 3% 70% 6% 6% 5% 10%;
+    // grid-gap: 10px;
+    // background-color: #2196F3;
+    // border: 1px solid red;
+    // margin-left: 10px;
+    // margin-right: 10px;
+    border-left: 1px solid $table-data-bottom-bg-color;
+    border-right: 1px solid $table-data-bottom-bg-color;
+    // border-bottom: 1px solid black !important;
+  }
+  
+  .grid-container-table-header {
+      text-align: center;
+      background: $table-header-bg-color;
+      color: white;
+      font-weight: bold;
+      padding: 5px;
+  }
+
+  .grid-container-table-header:nth-child(n+3) {
+      text-align: right;
+  }
+
+  .grid-container-table-data {
+    padding: 2px;
+    border: none;
+    border-bottom: 1px solid $table-data-bottom-bg-color;
+    text-align: right;
+  }
+
+  .grid-container-table-data:first-child {
+      text-align: center;
+  }
+
+  .grid-container-table-data:nth-child(2) {
+      text-align: left;
+  }
+  
+
+.grid-container-table-footers {
+    margin: $default-margin;
+    display: grid;
+    grid-template-columns: 85% 7% 8%;
+    border: 1px solid $default-border-color;
+    padding: 5px;
+    border-radius: $default-border-radius;
+  }
+
+  .grid-container-table-footer {
+    padding: 5px;
+  }
+
+  .grid-container-table-footer:first-child {
+      color: green;
+      font-weight: bold;
+  }
+
+  .grid-container-table-footer:last-child {
+      text-align: right;
+      
+      background-color: $grand-total-bg-color;
+      color: white;
+      border-radius: $default-border-radius;
+  }
+// To be removed
 .live-billing-body {
     // background: blue;
 }
@@ -11,23 +138,31 @@ $product-width: 100rem;
     border: 1px solid blue;
     border-radius: 5px;
     margin: 5px;
-    height: calc(100vh - 15vw);
+    height: calc(100vh - 10vw);
     overflow-y: auto;
 }
 
 .live-billing-table-headers {
     display: flex;    
-    background: black;
-    color: white;
+    // background: black;
+    // color: white;
 }
 
 .live-billing-table-header {
-    width: 5rem;
+    width: $default-cell-width;
     // border-right: 1px solid black;
-    text-align: center;
-    padding: 0.5rem;
+    text-align: $default-cell-text-align;
+    border: 1px solid red;
+    padding: $default-cell-padding;
 }
+
+.live-billing-table-header:first-child {
+    text-align: $sno-cell-text-align;
+    width: $sno-cell-width;   
+}
+
 .live-billing-table-header:nth-child(2) {
+    text-align: $sno-cell-text-align;
    width: $product-width;    
 }
 
@@ -40,19 +175,21 @@ $product-width: 100rem;
 }
 
 .live-billing-table-data {
-    width: 5rem;
-    border: none;    
-    text-align: right;
-    padding: 0.5rem;
+    width: $default-cell-width;
+    // border: none;    
+    text-align: $default-cell-text-align;
+    padding: $default-cell-padding;
+    border-bottom: 1px solid #03a9f429;
 }
 
 .live-billing-table-data:first-child {
-    text-align: center;
+    width: $sno-cell-width;
+    text-align: $sno-cell-text-align;
 }
 
 .live-billing-table-data:nth-child(2) {
     width: $product-width;    
-    text-align: left;
+    text-align: $product-cell-text-align;
     
 }
 .live-billing-table-data:last-child {
@@ -69,20 +206,21 @@ $product-width: 100rem;
 }
 
 .live-billing-table-footer {
-    width: 5rem;
+    // width: $default-cell-width;
     border: none; 
-    text-align: right;
-    padding: 0.5rem;
+    // text-align: right;
+    padding: $default-cell-padding;
 }
 
 .live-billing-table-footer:first-child {
-    text-align: center;
+    text-align: left;
+    width: 80rem;
+    padding-right: 0px;
 }
 
-.live-billing-table-footer:nth-child(2) {
-    width: $product-width;    
-    text-align: left;
-    
+.live-billing-table-footer-inwords {
+    color: green;
+    font-weight: bold;    
 }
 
 .live-billing-table-footer:nth-child(3) {

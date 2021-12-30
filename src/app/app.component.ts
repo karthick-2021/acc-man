@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   tabs = [
     {'title': 'Billing', 'page' : 'live-billings'},
     {'title': 'Historical', 'page' : 'historical'},
-    {'title': 'Warehouse', 'page' : 'warehouse'}
+    {'title': 'Inventory', 'page' : 'warehouse'}
   ];
 
   constructor(private router: Router) {}

@@ -1,37 +1,57 @@
 <div class="live-billing-body">
-    <div class="live-billing-cust-info">
-        <div>Customer Name : Karthick</div>
-        <div>Customer Mobile : +91-9975681208</div>
+    <div class="billing-order-info">
+        <div class="grid-container-billing-order-info">
+            <div>Customer Name</div>
+            <div><input type="text" placeholder="Enter customer name" [(ngModel)]="custName" type="text"></div>
+            <div>Date</div>
+            <div>30-Dec-2021</div>
+        </div>
+        <div class="grid-container-billing-order-info">
+            <div>Customer Mobile</div>
+            <div><input type="text" autofocus placeholder="Enter customer mobile" [(ngModel)]="custMobile" type="text"
+                    (focusout)="setCustInfo()"></div>
+            <div>Invoice No</div>
+            <div>1</div>
+        </div>
+        <div class="grid-container-billing-order-info">
+            <div>Customer Email</div>
+            <div><input type="text" placeholder="Enter customer email" [(ngModel)]="custEmail" type="text"></div>
+        </div>
     </div>
 
-    <div class="live-billing-table">
-        <div class="live-billing-table-headers">
-            <div class="live-billing-table-header" *ngFor="let header of tableHeaders">{{ header }}</div>
+    <div class="billing-order-buttons">
+        <div></div>
+        <div><button class="billing-order-button">CLEAR</button>
+            <button class="billing-order-button">SUBMIT</button></div>
+    </div>
+    <div class="billing-table">
+        <div class="grid-container-table">
+            <div class="grid-container-table-header" *ngFor="let header of tableHeaders">{{ header }}</div>
         </div>
-        <div class="live-billing-table-datas" *ngFor="let data of dataSource">
-            <div class="live-billing-table-data">{{ data.sno }}</div>
-            <input type="text" autofocus class="live-billing-table-data" placeholder="Enter product"
-                [(ngModel)]="data.product">
-            <input type="text" class="live-billing-table-data" [(ngModel)]="data.quantity">
-            <input type="text" class="live-billing-table-data" [(ngModel)]="data.price" (blur)="addNewRow(data)">
-            <div class="live-billing-table-data">{{ getSubTotal(data) }}</div>
+
+        <div class="grid-container-table" *ngFor="let data of dataSource">
+            <!-- <div class="live-billing-table-datas1" *ngFor="let data of dataSource"> -->
+            <div class="grid-container-table-data">{{ data.sno }}</div>
+
+            <input type="text" class="grid-container-table-data" placeholder="Enter product" [(ngModel)]="data.product"
+                type="text" id="products" name="products" list="product-list" (focusout)="addItem(data)">
+
+            <!-- <div *ngFor="let product of products" *ngIf>{{ product }}</div> -->
+            <datalist id="product-list">
+                <option *ngFor="let product of products">{{ product }}</option>
+            </datalist>
+
+            <input type="text" class="grid-container-table-data" [(ngModel)]="data.quantity"
+                (change)="updateTotal(data)">
+            <input type="text" class="grid-container-table-data" [(ngModel)]="data.price" (change)="updateTotal(data)">
+            <input type="text" class="grid-container-table-data" [(ngModel)]="data.tax" (focusout)="updateTotal(data)">
+            <div class="grid-container-table-data">{{ getSubTotal(data) }}</div>
         </div>
     </div>
-    <div class="live-billing-footer">
-        <div class="live-billing-table-footers">
-            <div class="live-billing-table-footer"></div> <div class="live-billing-table-footer"></div> 
-            <div class="live-billing-table-footer">Total</div>
-            <div class="live-billing-table-footer">{{ total }}</div>
-        </div>
-        <div class="live-billing-table-footers">
-            <div class="live-billing-table-footer"></div> <div class="live-billing-table-footer"></div> 
-            <div class="live-billing-table-footer">Tax</div>
-            <div class="live-billing-table-footer">{{ tax }} %</div>
-        </div>
-        <div class="live-billing-table-footers">
-            <div class="live-billing-table-footer"></div> <div class="live-billing-table-footer"></div> 
-            <div class="live-billing-table-footer">Grand Total</div>
-            <div class="live-billing-table-footer">{{ grandTotal }}</div>
-        </div>
+    <div class="grid-container-table-footers">
+        <div class="grid-container-table-footer">Amount in words (Rounded) : {{ amountInWords() }}</div>
+        <div class="grid-container-table-footer">Grand Total</div>
+        <div class="grid-container-table-footer">{{ grandTotal }}</div>
     </div>
+    <!-- </div> -->
 </div>

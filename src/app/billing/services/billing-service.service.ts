@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LiveBilling } from './models/LiveBilling';
+import { LiveBilling } from '../models/LiveBilling';
 
 @Injectable({
   providedIn: 'root'

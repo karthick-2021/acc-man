@@ -5,8 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
 import { HistoricalComponent } from './historical/historical.component';
 import { WarehouseComponent } from './warehouse/warehouse.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -28,6 +29,9 @@ export const ROUTES: Routes = [
     MatTabsModule,
     FormsModule,
     MatGridListModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(ROUTES),
   ],
   exports: [LiveComponent],
