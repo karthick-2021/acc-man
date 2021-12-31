@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Inventory } from '../models/Inventory';
 import { LiveBilling } from '../models/LiveBilling';
+import { BillingServiceService } from '../services/billing-service.service';
+import { AddNewItemComponent } from './add-new-item/add-new-item.component';
 
 @Component({
   selector: 'app-warehouse',
@@ -8,16 +12,24 @@ import { LiveBilling } from '../models/LiveBilling';
 })
 export class WarehouseComponent implements OnInit {
 
-  tableHeaders = ['#', 'Product', 'Quantity', 'Price', 'Total'];
-  dataSource: LiveBilling[] = [];
+  tableHeaders = ['Product ID', 'Product', 'Quantity', 'Price', 'Total'];
+  dataSource: Inventory[] = [];
 
-  index = 1;
-
-  products: string[] = ['Milk 500 ml', 'Sugar 1 Kg', 'Britannia biscuits 100g', 'Apple 1 Kg'];
-
-  constructor() { }
+  constructor(private billingService: BillingServiceService, public dialog: MatDialog, public service: BillingServiceService) { }
 
   ngOnInit(): void {
+    this.billingService.getInventory().subscribe((inventory: Inventory[]) => {
+      this.dataSource = inventory;
+      console.log(this.dataSource)
+    })
   }
 
+  
+  addItem() {
+    const dialogRef = this.dialog.open(AddNewItemComponent, { width: "70%" });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
+  }
 }

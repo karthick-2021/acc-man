@@ -1,21 +1,5 @@
-$sno-cell-width: 3rem;
-$product-width: 90rem;
 
-$default-cell-width: 7rem;
-$default-border-radius: 5px;
-$default-margin: 10px;
-$default-padding: 10px;
-$default-cell-padding: 0.5rem;
-$default-border-color: black;
-
-$sno-cell-text-align: center;
-$product-cell-text-align: left;
-$default-cell-text-align: right;
-
-$table-header-bg-color: #011b33;
-$table-data-bottom-bg-color: #03a9f429;
-$grand-total-bg-color: #011b33;
-
+@import '../shared/styles/variables.scss';
 
 $columns: 6;
 
@@ -63,14 +47,8 @@ $columns: 6;
 .grid-container-table {
     display: grid;
     grid-template-columns: 3% 70% 6% 6% 5% 10%;
-    // grid-gap: 10px;
-    // background-color: #2196F3;
-    // border: 1px solid red;
-    // margin-left: 10px;
-    // margin-right: 10px;
     border-left: 1px solid $table-data-bottom-bg-color;
     border-right: 1px solid $table-data-bottom-bg-color;
-    // border-bottom: 1px solid black !important;
   }
   
   .grid-container-table-header {

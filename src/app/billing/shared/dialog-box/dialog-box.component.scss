@@ -1,0 +1,36 @@
+@import '../styles/variables.scss';
+
+.grid-container-table {
+    display: grid;
+    grid-template-columns: 3% 70% 6% 6% 5% 10%;
+    border-left: 1px solid $table-data-bottom-bg-color;
+    border-right: 1px solid $table-data-bottom-bg-color;
+  }
+  
+  .grid-container-table-header {
+      text-align: center;
+      background: $table-header-bg-color;
+      color: white;
+      font-weight: bold;
+      padding: 5px;
+  }
+
+  .grid-container-table-header:nth-child(n+3) {
+      text-align: right;
+  }
+
+  .grid-container-table-data {
+    padding: 2px;
+    border: none;
+    border-bottom: 1px solid $table-data-bottom-bg-color;
+    text-align: right;
+  }
+
+  .grid-container-table-data:first-child {
+      text-align: center;
+  }
+
+  .grid-container-table-data:nth-child(2) {
+      text-align: left;
+  }
+  

@@ -1,0 +1,18 @@
+
+<!-- <div *ngFor="let i of invoice && invoice.billings">
+    {{ i && i.product }}
+</div> -->
+<div class="billing-table">
+    <div class="grid-container-table">
+        <div class="grid-container-table-header" *ngFor="let header of tableHeaders">{{ header }}</div>
+    </div>
+
+    <div class="grid-container-table" *ngFor="let data of invoice && invoice.billings">
+        <div class="grid-container-table-data">{{ getsno(data.sno) }}</div>
+        <div class="grid-container-table-data">{{ data.product }}</div>
+        <div class="grid-container-table-data">{{ data.quantity }}</div>
+        <div class="grid-container-table-data">{{ data.price }}</div>
+        <div class="grid-container-table-data">{{ data.tax }}</div>
+        <div class="grid-container-table-data">{{ data.total }}</div>
+    </div>
+</div>

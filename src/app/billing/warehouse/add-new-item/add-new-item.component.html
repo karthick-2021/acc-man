@@ -1,0 +1,17 @@
+<div>
+    <div class="add-new-grid-container">
+        <div class="add-new-label" *ngFor="let label of labels">{{ label }}</div>
+    </div>
+    <div class="add-new-grid-container">
+        <input type="text" [(ngModel)]="productID" class="add-new-input" (focusout)="addItem()">
+        <input type="text" [(ngModel)]="product" class="add-new-input">
+        <input type="text" [(ngModel)]="quantity" class="add-new-input">
+        <input type="text" [(ngModel)]="price" class="add-new-input">
+        <input type="text" [(ngModel)]="tax" class="add-new-input">
+    </div>
+    <div class="add-new-buttons">
+        <button (click)="addItem()" class="add-new-button">SAVE</button>
+        <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial class="add-new-button">SAVE</button> -->
+        <button (click)="onNoClick()" class="add-new-button">CANCEL</button>
+    </div>
+</div>

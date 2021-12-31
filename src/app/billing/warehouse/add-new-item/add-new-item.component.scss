@@ -1,0 +1,33 @@
+@import '../../shared/styles/variables.scss';
+
+.add-new-grid-container {
+    display: grid;
+    grid-template-columns: 10% 65% 10% 10% 5%;
+}
+
+.add-new-grid-container:first-child {
+    text-align: center;
+    background: $table-header-bg-color;
+    color: white;
+}
+
+.add-new-buttons {
+    margin: $default-margin;
+    padding: $default-padding;
+    text-align: center;
+}
+
+.add-new-button {
+    border-radius: 10px;
+    background: black;
+    color: white;
+    border: 3px solid #a972cbb0;
+    width: 100px;
+    padding: 5px;
+}
+
+.add-new-button:last-child {
+    margin-left: 5px;
+    background: #9e9e9ead;
+    color: black;
+}

@@ -1,1 +1,28 @@
-<p>historical works!</p>
+<div class="historical-body">
+
+    <!-- <div class="historical-search">
+        <input class="historical-search-input" type="text" placeholder="Enter your search term">
+        <button>CLEAR</button>
+    </div> -->
+
+    <div class="historical-table">
+
+        <div class="grid-container-table">
+            <div class="grid-container-table-header" *ngFor="let header of tableHeaders">{{ header }}</div>
+        </div>
+
+        <div class="grid-container-table" *ngFor="let data of invoices">
+            <div class="grid-container-table-data">
+                <button class="invoice-button" mat-button (click)="openDialog(data)">{{ data.invoiceNo }}</button>
+            </div>
+            <div class="grid-container-table-data">{{ data.date }}</div>
+            <div class="grid-container-table-data">{{ data.custName }}</div>
+            <div class="grid-container-table-data">{{ data.custMobile }}</div>
+            <div class="grid-container-table-data">{{ data.custEmail }}</div>
+            <div class="grid-container-table-data">{{ data.grandTotal }}</div>
+            <div class="grid-container-table-data"><mat-icon class="print-icon">print</mat-icon><mat-icon class="delete-icon">delete</mat-icon></div>
+        </div>
+    </div>
+</div>
+
+

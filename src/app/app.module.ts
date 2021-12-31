@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BillingModule } from './billing/billing.module';
 import { LiveComponent } from './billing/live/live.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: LiveComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     AppRoutingModule,
     BillingModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule],

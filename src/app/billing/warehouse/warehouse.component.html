@@ -1,18 +1,19 @@
-<!-- <div class="inventory-body">
-    <div class="inventory-search">
-        <input type="text" placeholder="Seach product...">
+<div class="inventory-body">
+    <div class="inventory-add">
+        <button class="add-button" mat-button (click)="addItem()">ADD NEW</button>
     </div>
 
     <div class="inventory-table">
-        <div class="inventory-table-headers">
+        <div class="inventory-table-grid">
             <div class="inventory-table-header" *ngFor="let header of tableHeaders">{{ header }}</div>
         </div>
-        <div class="inventory-table-datas" *ngFor="let data of dataSource">
-            <div class="inventory-table-data">{{ data.sno }}</div>
-            <input type="text" autofocus class="inventory-table-data" placeholder="Enter product"
-                [(ngModel)]="data.product" type="text">
-            <input type="text" class="inventory-table-data" [(ngModel)]="data.quantity">
-            <input type="text" class="inventory-table-data" [(ngModel)]="data.price" (blur)="addNewRow(data)">
+        <div class="inventory-table-grid" *ngFor="let data of dataSource">
+            <div class="inventory-table-data">{{ data && data.productID }}</div>
+            <input type="text" autofocus class="inventory-table-data"
+                [(ngModel)]="data && data.product" type="text">
+            <input type="text" class="inventory-table-data" [(ngModel)]="data && data.quantity">
+            <input type="text" class="inventory-table-data" [(ngModel)]="data && data.price">
+            <input type="text" class="inventory-table-data" [(ngModel)]="data && data.tax">
         </div>
     </div>
-</div> -->
+</div>

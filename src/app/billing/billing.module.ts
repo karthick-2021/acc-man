@@ -9,7 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatIconModule} from '@angular/material/icon'
-
+import { HttpClientModule } from '@angular/common/http';
+import { DialogBoxComponent } from './shared/dialog-box/dialog-box.component';
+import { MatDialogModule} from '@angular/material/dialog';
+import { AddNewItemComponent } from './warehouse/add-new-item/add-new-item.component';
+import { DialogAlertComponent } from './shared/components/dialog-alert/dialog-alert.component';
 
 
 
@@ -24,7 +28,10 @@ export const ROUTES: Routes = [
   declarations: [
     LiveComponent,
     HistoricalComponent,
-    WarehouseComponent
+    WarehouseComponent,
+    DialogBoxComponent,
+    AddNewItemComponent,
+    DialogAlertComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +42,8 @@ export const ROUTES: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
+    HttpClientModule,
+    MatDialogModule,
     RouterModule.forChild(ROUTES),
   ],
   exports: [LiveComponent],

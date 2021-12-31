@@ -7,6 +7,10 @@ import { startWith, map } from 'rxjs/operators';
 import { StaticDataService } from '../services/static-data.service';
 import * as _ from 'lodash';
 import * as converter from 'number-to-words';
+import { Invoice } from '../models/Invoice';
+import { Inventory } from '../models/Inventory';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAlertComponent } from '../shared/components/dialog-alert/dialog-alert.component';
 
 
 @Component({
@@ -28,32 +32,37 @@ export class LiveComponent implements OnInit {
   products: any[] = [];
   filteredStreets: Observable<string[]> | undefined;
 
-  inventory: LiveBilling[] = [];
+  inventory: Inventory[] = [];
   custName = '';
   custEmail = '';
-  custMobile = '';
-
+  custMobile = 9;
+  invoiceNo = 0;
   hoverData = 0;
+  date = new Date();
+  today = this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear();
 
-  private _filter(value: string): string[] {
-    const filterValue = this._normalizeValue(value);
-    return this.products.filter(street => this._normalizeValue(street).includes(filterValue));
-  }
-
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
-  }
-
-  constructor(public billingService: BillingServiceService, public staticData: StaticDataService) { }
+  constructor(public billingService: BillingServiceService, public staticData: StaticDataService, public dialog: MatDialog, public service: BillingServiceService) { }
 
   ngOnInit(): void {
     this.clear();
-    this.inventory = this.staticData.getInventory();
-    this.products = _.map(this.inventory, 'product');
-    this.filteredStreets = this.control.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value)),
-    );
+    // this.inventory = this.staticData.getInventory();
+    // this.products = _.map(this.inventory, 'product');
+
+    this.billingService.getInventory().subscribe((a: Inventory[]) => {
+      if (a.length > 0)
+      {
+        this.inventory = a;
+        this.products = _.map(this.inventory, 'product');
+      }
+    })
+    this.billingService.getGreet('Karthick').subscribe(a => {
+      console.log('inside : ' + a);
+    })
+    this.billingService.getAllInvoices().subscribe((historical: Invoice[]) => {
+      historical.forEach(a => this.invoiceNo = a.invoiceNo)
+      this.invoiceNo++;
+    })
+   
   }
 
   clear() {
@@ -66,6 +75,17 @@ export class LiveComponent implements OnInit {
     this.dataSource.pop()
     console.log('Sending to backend')
     console.log(this.dataSource)
+    // date = new Date().toUTCString();
+    let invoice = new Invoice(this.invoiceNo, this.custMobile, this.custName, this.custEmail, new Date().toLocaleString(), this.dataSource, this.amountInWords(), this.grandTotal);
+    console.log(invoice)
+    this.billingService.saveBilling(invoice)
+      .subscribe(a => {
+        const dialogRef = this.dialog.open(DialogAlertComponent, { width: "30%", data: a });
+
+        dialogRef.afterClosed().subscribe(result => {
+          this.clear();
+        });
+      });
   }
   displayDelete(value: LiveBilling) {
     this.hoverData = value.sno;
@@ -138,7 +158,7 @@ export class LiveComponent implements OnInit {
       inWords = converter.toWords(this.grandTotal)
       inWords = inWords.charAt(0).toUpperCase() + inWords.slice(1);
     }
-    return inWords 
+    return inWords
   }
 
   setCustInfo() {

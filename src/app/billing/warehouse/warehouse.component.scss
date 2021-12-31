@@ -1,0 +1,68 @@
+@import '../shared/styles/variables.scss';
+
+.inventory-add {
+    text-align: right;
+    margin-top: $default-margin;
+    margin-right: $default-margin;
+}
+
+.add-button {
+    border-radius: 10px;
+    background: black;
+    color: white;
+    border: 3px solid #a972cbb0;
+    width: 100px;
+    padding: 5px;
+}
+
+.inventory-table {
+    border: 1px solid $default-border-color;
+    margin: $default-margin;
+    padding: $default-padding;
+    border-radius: $default-border-radius;
+    margin-top: 0px;
+    height: calc(100vh - 10vw);
+    overflow-y: auto;
+}
+
+.inventory-table-grid {
+    display: grid;
+    grid-template-columns: 8% 70% 7% 9% 6%;
+    border: none;
+    border-left: 1px solid $table-data-bottom-bg-color;
+    border-right: 1px solid $table-data-bottom-bg-color;
+}
+
+.inventory-table-grid:first-child {
+    text-align: center;
+    background: $table-header-bg-color;
+    color: white;
+    padding-top: $default-padding;
+    padding-bottom: $default-padding;
+}
+
+.inventory-table-header:nth-child(n+3) {
+    text-align: right;
+}
+
+.inventory-table-header:nth-child(n+3) {
+    padding-right: 2px;
+}
+
+.inventory-table-data {
+    border: none;
+    border-bottom: 1px solid $table-data-bottom-bg-color;
+    text-align: right;
+}
+
+.inventory-table-data:first-child {
+    text-align: center;
+}
+
+.inventory-table-data:nth-child(2) {
+    text-align: left;
+}
+
+.inventory-table-data:last-child {
+    padding-right: 5px;
+}
