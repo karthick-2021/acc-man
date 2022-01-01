@@ -70,6 +70,8 @@ export class LiveComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.dataSource.length)
+   if (this.dataSource.length > 1) {
     let index = 0;
     this.dataSource.forEach(a => a.sno = index++)
     this.dataSource.pop()
@@ -86,6 +88,7 @@ export class LiveComponent implements OnInit {
           this.clear();
         });
       });
+   }
   }
   displayDelete(value: LiveBilling) {
     this.hoverData = value.sno;
