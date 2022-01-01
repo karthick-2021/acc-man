@@ -11,8 +11,8 @@ export class BillingServiceService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'http://localhost:8080';
-  // url = 'https://inv-mgr.herokuapp.com';
+  // url = 'http://localhost:8080';
+  url = 'https://inv-mgr.herokuapp.com';
   getGreet(name: string): Observable<string> {
    
     return this.http.post(this.url + '/api/greet', name, { responseType: 'text'});
