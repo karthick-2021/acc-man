@@ -35,13 +35,25 @@ $columns: 6;
 }
 
 .billing-order-button {
+    // border-radius: 10px;
+    // background: black;
+    // color: white;
+    // border: 3px solid #a972cbb0;
+    // width: 70px;
+    // margin-left: 5px;
+    // padding: 5px;
+    
+
     border-radius: 10px;
-    background: black;
-    color: white;
-    border: 3px solid #a972cbb0;
     width: 70px;
     margin-left: 5px;
     padding: 5px;
+    /* box-shadow: -2px 2px red; */
+    box-shadow: rgb(151 65 252 / 20%) 0 15px 30px -5px;
+    border-radius: 8px;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    color: white;
+
 }
 
 .grid-container-table {
