@@ -11,24 +11,26 @@ export class BillingServiceService {
 
   constructor(private http: HttpClient) { }
 
+  // url = 'http://localhost:8080';
+  url = 'https://inv-mgr.herokuapp.com';
   getGreet(name: string): Observable<string> {
    
-    return this.http.post('/api/greet', name, { responseType: 'text'});
+    return this.http.post(this.url + '/api/greet', name, { responseType: 'text'});
   }
 
   saveBilling(value: Invoice): Observable<string> {
-    return this.http.post('/api/saveBilling', value, { responseType: 'text'})
+    return this.http.post(this.url + '/api/saveBilling', value, { responseType: 'text'})
   }
   
   getAllInvoices(): Observable<any> {
-    return this.http.post('/api/getHistorical', { responseType: 'any'})
+    return this.http.post(this.url + '/api/getHistorical', { responseType: 'any'})
   }
 
   getInventory(): Observable<any> {
-    return this.http.post('/api/getInventory', { responseType: 'any'})
+    return this.http.post(this.url + '/api/getInventory', { responseType: 'any'})
   }
 
   saveInventory(value: Inventory): Observable<string> {
-    return this.http.post('/api/saveInventory', value, { responseType: 'text'})
+    return this.http.post(this.url + '/api/saveInventory', value, { responseType: 'text'})
   }
 }

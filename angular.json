@@ -73,11 +73,9 @@
           "configurations": {
             "production": {
               "browserTarget": "acc-man:build:production",
-              "proxyConfig": "src/proxy.config.json"
             },
             "development": {
               "browserTarget": "acc-man:build:development",
-              "proxyConfig": "src/proxy.config.json"
             }
           },
           "defaultConfiguration": "development"
